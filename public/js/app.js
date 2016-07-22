@@ -11,11 +11,34 @@
 
 
 
+
+
+
+$locationsList = $('#locationsTarget');
+
+// compile handlebars template
+var source = $('#locations-template').html();
+ template = Handlebars.compile(source);
+
+
+
+$.ajax({
+  method: 'GET',
+  url: '/api/locations',
+  success: handleSuccess,
+  error: handleError
+});
+
+$.get('/api/locations').success(function (locations) {
+    locations.forEach(function(location) {
+        render(location);
+    });
+});
+
 $("form").on("submit", function(event) {
   event.preventDefault();
   var dataString = $(this).serialize();
   console.log(dataString);
-  console.log('Testing submit');
   $.ajax({
     method: 'POST',
     url: 'api/locations',
@@ -28,19 +51,147 @@ $("form").on("submit", function(event) {
   console.log();
 });
 
+$locationsList.on('click', '.deleteBtn', function() {
+  $.ajax({
+    method: 'DELETE',
+    url: '/api/cities/'+$(this).attr('data-id'),
+    success: deleteLocationSuccess,
+    error: deleteLocationError
+  });
+});
+
+function render (allLocations) {
+  // empty existing posts from view
+  $locationsList.empty();
+  // pass `allLocations` into the template function
+  var locationsHtml = template({ locations: allLocations });
+
+  // append html to the view
+  $locationsList.append(locationsHtml);
+}
+
 
 // success for GET ALL
 function handleSuccess(taco) {
-
-
-
-    // console.log("THIS TACO IS A : " , taco);
+// console.log("THIS TACO IS A : " , taco);
     // taco.forEach(function (element){
     //     render(element);
     // });
 }
 
-// general error handler
-function handleError() {
-  console.log("error");
+function handleSuccess(json) {
+  allLocations = json;
+  render(allLocations);
 }
+
+//General error handler
+function handleError(e) {
+  console.log('Ah, oops');
+  $('#cityTarget').text('Failed to load cities, is the server working?');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// CREATE
+//
+// $('#album-form form').on('submit', function(e) {
+//     e.preventDefault();
+//     var formData = $(this).serialize();
+//     console.log('formData', formData);
+//     $.post('/api/albums', formData, function(album) {
+//       console.log('album after POST', album);
+//       renderAlbum(album);  //render the server's response
+//     });
+//     $(this).trigger("reset");
+//   });
+//
+//
+//
+//
+//   // UPDATE
+//
+//   //   $('#albums').on('click', '.add-song', function(e) {
+//   //   var id= $(this).parents('.album').data('album-id');
+//   //   console.log('id',id);
+//   //   $('#songModal').data('album-id', id);
+//   //   $('#songModal').modal();
+//   // });
+//   //
+//   // $('#saveSong').on('click', handleNewSongSubmit);
+//   //
+//   // });
+//
+//
+//   $locationsList = $('#locationsTarget');
+//
+//
+//   $.ajax({
+//     method: 'GET',
+//     url: '/api/locations',
+//     success: handleSuccess,
+//     error: handleError
+//   });
+//
+//   $('#newCityForm').on('submit', function(e) {
+//     e.preventDefault();
+//     $.ajax({
+//       method: 'POST',
+//       url: '/api/cities',
+//       data: $(this).serialize(),
+//       success: newCitySuccess,
+//       error: newCityError
+//     });
+//   });
+//
+//   $citiesList.on('click', '.deleteBtn', function() {
+//     $.ajax({
+//       method: 'DELETE',
+//       url: '/api/cities/'+$(this).attr('data-id'),
+//       success: deleteCitySuccess,
+//       error: deleteCityError
+//     });
+//   });
