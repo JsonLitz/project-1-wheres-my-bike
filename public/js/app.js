@@ -12,29 +12,32 @@
 
 
 $("form").on("submit", function(event) {
-  // event.preventDefault();
-  // var dataString = $(this).serialize();
-  console.log($(this).serialize());
+  event.preventDefault();
+  var dataString = $(this).serialize();
+  console.log(dataString);
   console.log('Testing submit');
   $.ajax({
     method: 'POST',
     url: 'api/locations',
     data: dataString,
     // the data type here is ONE json object
-    success: handlePostSuccess,
+    success: handleSuccess,
     error: handleError
   });
   // $('form').trigger('reset');
-  console.log('Testing submit');
+  console.log();
 });
 
 
 // success for GET ALL
 function handleSuccess(taco) {
-    console.log("THIS TACO IS A : " , taco);
-    taco.forEach(function renderOne(element){
-        render(element);
-    });
+
+
+
+    // console.log("THIS TACO IS A : " , taco);
+    // taco.forEach(function (element){
+    //     render(element);
+    // });
 }
 
 // general error handler

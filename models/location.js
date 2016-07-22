@@ -5,7 +5,7 @@ var LocationSchema = new Schema({
   streetOne: String,
   streetTwo: String,
   noteToSelf: String,
-  dateTime: Number
+  dateTime: Date
 });
 
 var Location = mongoose.model('Location', LocationSchema);

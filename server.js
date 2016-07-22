@@ -12,14 +12,15 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-var controllers = require('./controllers');
 
 /*
  * JSON API Endpoints
  */
+ var controllers = require('./controllers');
 
 app.get('/api', controllers.api.index);
-app.get('/api/locations', controllers.api.locationController);
+app.get('/api/locations', controllers.location.index);
+app.post('/api/locations', controllers.location.create);
 
 /*
  * HTML Endpoints
