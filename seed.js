@@ -4,7 +4,7 @@ var locations =[
     {
         streetOne: 'Jackson',
         streetTwo: 'Gough',
-        noteToSelf: 'Right by the pizzareria you dummy',
+        noteToSelf: 'Right by the pizzaria you dummy',
     },
     {
         streetOne: 'Van Ness',
@@ -22,3 +22,24 @@ var locations =[
         noteToSelf: 'In front of school, genius!',
     }
 ];
+
+db.Location.remove({}, function(err, locations) {
+  if (err) {
+    console.log('Error occurred in remove', err);
+    return;
+  } else {
+    console.log('removed all locations');
+
+    db.Location.create(locations, function(err, newLocations){
+      if (err) {
+         console.log('err', err);
+      }
+      console.log("created" +  locations.length + "locations");
+
+      process.exit();
+    });
+  }
+
+
+
+});
