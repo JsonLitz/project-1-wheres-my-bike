@@ -24,7 +24,7 @@ $("form").on("submit", function(event) {
     success: handleSuccess,
     error: handleError
   });
-  // $('form').trigger('reset');
+  $('form').trigger('reset');
   console.log();
 });
 
