@@ -49,16 +49,21 @@ function destroy(req, res) {
   });
 }
 
-// Delete by ID
-// function destroy(req, res) {
-//     db.Location.findOneAndRemove({_id: req.params.skatespotId}, function(err, skatespotToDelete) {
-//         if (err) {
-//             console.log(err, "unable to delete");
-//         }
-//         res.json(skatespotToDelete);
-//         console.log("you did it!");
-//     });
-// }
+//PUT /api/locations/:id update existing location
+function update(req, res) {
+    console.log('updating with data', req.body);
+    var updateData = req.body;
+    var id = req.params.locationId;
+    console.log('test123456');
+    db.Location.findByIdAndUpdate(id, updateData, {new: true}, function(err, savedUpdatedLocation) {
+        if (err) {
+            console.log('locationToUpdate error', err);
+        }
+        console.log(savedUpdatedLocation);
+        res.json(savedUpdatedLocation);
+    });
+}
+
 
 
 // module.exports.index = index;
@@ -66,8 +71,8 @@ module.exports = {
   index: index,
   create: create,
   destroy: destroy,
-  // show: show,
-  // update: update
+  show: show,
+  update: update
 //
 };
 
