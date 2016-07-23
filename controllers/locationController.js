@@ -11,25 +11,17 @@ function index(req, res) {
 
 
 function create(req, res) {
-    console.log(req.body);
-
-  var newLocation = new db.Location({
-      streetOne: req.body.streetOne,
-      streetTwo: req.body.streetTwo,
-      noteToSelf: req.body.noteToSelf,
+    var newLocation = new db.Location({
+        streetOne: req.body.streetOne,
+        streetTwo: req.body.streetTwo,
+        noteToSelf: req.body.noteToSelf,
     });
-
-    console.log("PRESAVE: ",  newLocation);
-
   newLocation.save(function (err, savedLocation) {
     if (err) {
         console.log ('err:', err);
     }
-    console.log("POSTSAVE: " , savedLocation);
     res.json(savedLocation);
   });
-  // console.log(newAlbum.name);
-
 }
 
 
@@ -64,9 +56,6 @@ function update(req, res) {
     });
 }
 
-
-
-// module.exports.index = index;
 module.exports = {
   index: index,
   create: create,

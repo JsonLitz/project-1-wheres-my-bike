@@ -9,7 +9,7 @@ var locations =[
     {
         streetOne: 'Van Ness',
         streetTwo: 'Bush',
-        noteToSelf: 'At bus stop you ',
+        noteToSelf: 'At bus stop ',
     },
     {
         streetOne: 'Polk',
