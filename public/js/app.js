@@ -9,10 +9,7 @@
 
 
 
-
-
-
-
+var allLocations = [];
 
 $locationsList = $('#locationsTarget');
 
@@ -25,15 +22,10 @@ var source = $('#locations-template').html();
 $.ajax({
   method: 'GET',
   url: '/api/locations',
-  success: handleSuccess,
+  success: handleGetAllSuccess,
   error: handleError
 });
 
-$.get('/api/locations').success(function (locations) {
-    locations.forEach(function(location) {
-        render(location);
-    });
-});
 
 $("form").on("submit", function(event) {
   event.preventDefault();
@@ -44,7 +36,7 @@ $("form").on("submit", function(event) {
     url: 'api/locations',
     data: dataString,
     // the data type here is ONE json object
-    success: handleSuccess,
+    success: handlePostSuccess,
     error: handleError
   });
   $('form').trigger('reset');
@@ -54,34 +46,56 @@ $("form").on("submit", function(event) {
 $locationsList.on('click', '.deleteBtn', function() {
   $.ajax({
     method: 'DELETE',
-    url: '/api/cities/'+$(this).attr('data-id'),
+    url: '/api/locations/'+$(this).attr('data-id'),
     success: deleteLocationSuccess,
     error: deleteLocationError
   });
 });
 
-function render (allLocations) {
+function render () {
   // empty existing posts from view
   $locationsList.empty();
   // pass `allLocations` into the template function
   var locationsHtml = template({ locations: allLocations });
-
+  console.log(locationsHtml);
   // append html to the view
   $locationsList.append(locationsHtml);
 }
 
 
 // success for GET ALL
-function handleSuccess(taco) {
+function handleGetAllSuccess(taco) {
+    allLocations = taco;
+    console.log(allLocations);
+
+    render();
 // console.log("THIS TACO IS A : " , taco);
     // taco.forEach(function (element){
     //     render(element);
     // });
 }
+function deleteLocationSuccess(json) {
+    var location = json;
+    var locationId = location._id;
+
+    // find the location with the correct ID and remove it from our allCities array
+    for(var index = 0; index < allLocations.length; index++) {
+      if(allLocations[index]._id === locationId) {
+        allLocations.splice(index, 1);
+        break;
+      }
+    }
+    render(allLocations);
+
+}
 
 function handleSuccess(json) {
   allLocations = json;
-  render(allLocations);
+  render();
+}
+function handlePostSuccess(json) {
+    allLocation.unshift(json);
+    render();
 }
 
 //General error handler
@@ -90,11 +104,9 @@ function handleError(e) {
   $('#cityTarget').text('Failed to load cities, is the server working?');
 }
 
-
-
-
-
-
+function deleteLocationError(){
+    console.log('oops the city wasnt deleted');
+}
 
 
 
