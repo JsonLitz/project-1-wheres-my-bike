@@ -16,3 +16,12 @@
 .parkingHistory {
     text-align: center;
 }
+
+input {
+    color:black;
+}
+
+.login {
+    padding-left: 25px;
+
+}

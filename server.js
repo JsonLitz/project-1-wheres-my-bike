@@ -60,6 +60,7 @@ app.get('/', function homepage (req, res) {
 app.get('/signup', function (req, res) {
   res.render('signup'); // alternative = res.sendFile
 });
+
 //Signup new user
 app.post('/signup', function (req, res) {
   User.register(new User({ username: req.body.username }), req.body.password,

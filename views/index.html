@@ -14,38 +14,39 @@
 </head>
 
 <body>
+
     <nav class="light-blue lighten-1" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><i class="fa fa-hand-peace-o" aria-hidden="true"></i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Navbar Link</a></li>
+                <li><a href="#">Map it</a></li>
             </ul>
 
-            <ul id="nav-mobile" class="side-nav">
-                <li><p id='login' class= "light-blue-text">Login</P></li>
+            <ul id="nav-mobile" class="side-nav login">
+                <li><p class= "light-blue-text ">Login</P></li>
 
                 <form method="POST" action="/login">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                    <div class="form-group input-field">
+                        <input type="text" name="password" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-block btn-primary" value="Log In">
                     </div>
                 </form>
 
-                <li><p id= 'signUp' class= "light-blue-text">Sign Up</P></li>
+                <li><p class= "light-blue-text ">Sign Up</P></li>
                     <form method="POST" action="/signup">
 
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                    <div class="form-group input-field">
+                        <input type="text" name="password" class="form-control" placeholder="Password">
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Email">
+                    <div class="form-group input-field">
+                        <input type="text" name="email" class="form-control" placeholder="Email">
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-block btn-primary" value="Sign up">
