@@ -55,7 +55,7 @@ $locationsList.on('click', '.deleteBtn', function() {
 function render () {
   // empty existing posts from view
   $locationsList.empty();
-  // pass `allLocations` into the template function
+  // pass `allLocations` into the `template` function
   var locationsHtml = template({ locations: allLocations });
   console.log(locationsHtml);
   // append html to the view
@@ -79,7 +79,7 @@ function deleteLocationSuccess(json) {
     var locationId = location._id;
 
     // find the location with the correct ID and remove it from our allCities array
-    for(var index = 0; index < allLocations.length; index++) {
+    for(var index = 0; index <  f.length; index++) {
       if(allLocations[index]._id === locationId) {
         allLocations.splice(index, 1);
         break;
@@ -94,7 +94,7 @@ function handleSuccess(json) {
   render();
 }
 function handlePostSuccess(json) {
-    allLocation.unshift(json);
+    allLocations.unshift(json);
     render();
 }
 

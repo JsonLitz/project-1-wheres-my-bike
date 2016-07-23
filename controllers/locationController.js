@@ -9,6 +9,7 @@ function index(req, res) {
 }
 
 
+
 function create(req, res) {
     console.log(req.body);
 
@@ -32,12 +33,39 @@ function create(req, res) {
 }
 
 
+function show(req, res) {
+  db.Location.findById(req.params.locationId, function(err, foundLocation) {
+    if(err) { console.log('locationController.show error', err); }
+    console.log('locationController.show responding with', foundLocation);
+    res.json(foundLocation);
+  });
+}
+//
+function destroy(req, res) {
+  db.Location.findOneAndRemove({_id: req.params.locationId }, function(err, foundLocation) {
+    if(err) { console.log('locationController.show error', err); }
+    console.log('location entry was succesfully deleted!', foundLocation);
+    res.json(foundLocation);
+  });
+}
+
+// Delete by ID
+// function destroy(req, res) {
+//     db.Location.findOneAndRemove({_id: req.params.skatespotId}, function(err, skatespotToDelete) {
+//         if (err) {
+//             console.log(err, "unable to delete");
+//         }
+//         res.json(skatespotToDelete);
+//         console.log("you did it!");
+//     });
+// }
+
 
 // module.exports.index = index;
 module.exports = {
   index: index,
   create: create,
-  // destroy: destroy,
+  destroy: destroy,
   // show: show,
   // update: update
 //

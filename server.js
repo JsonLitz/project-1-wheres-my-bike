@@ -21,7 +21,8 @@ app.use(bodyParser.urlencoded({
 app.get('/api', controllers.api.index);
 app.get('/api/locations', controllers.location.index);
 app.post('/api/locations', controllers.location.create);
-
+app.delete('/api/locations/:locationId', controllers.location.destroy);
+// app.get('/api/locations/:locationId', controllers.location.show);
 /*
  * HTML Endpoints
  */

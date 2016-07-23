@@ -4,22 +4,22 @@ var locations =[
     {
         streetOne: 'Jackson',
         streetTwo: 'Gough',
-        noteToSelf: 'Right by the pizzeria you dummy',
+        noteToSelf: 'Right by the pizzeria ',
     },
     {
         streetOne: 'Van Ness',
         streetTwo: 'Bush',
-        noteToSelf: 'At bus stop you turd',
+        noteToSelf: 'At bus stop you ',
     },
     {
         streetOne: 'Polk',
         streetTwo: 'Clay',
-        noteToSelf: 'By the donut shop ya moron',
+        noteToSelf: 'By the donut shop ',
     },
     {
         streetOne: 'Bush',
         streetTwo: 'Sansome',
-        noteToSelf: 'In front of school, genius!',
+        noteToSelf: 'In front of school!',
     }
 ];
 
