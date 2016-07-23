@@ -27,7 +27,7 @@ $.ajax({
 });
 
 
-$("form").on("submit", function(event) {
+$("#crossStreets").on("submit", function(event) {
   event.preventDefault();
   var dataString = $(this).serialize();
   console.log(dataString);
