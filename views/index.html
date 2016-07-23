@@ -21,7 +21,34 @@
             </ul>
 
             <ul id="nav-mobile" class="side-nav">
-                <li><a href="#">Navbar Link</a></li>
+                <li><p id='login' class= "light-blue-text">Login</P></li>
+
+                <form method="POST" action="/login">
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-block btn-primary" value="Log In">
+                    </div>
+                </form>
+
+                <li><p id= 'signUp' class= "light-blue-text">Sign Up</P></li>
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-block btn-primary" value="Sign up">
+                    </div>
+
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
@@ -80,7 +107,7 @@
                                     <tr>
                                         <th COLSPAN="6">
                                             <br>
-                                            <h3 class ='light-blue-text'>Places you've parked</h3>
+                                            <h3 class='light-blue-text'>Places you've parked</h3>
                                         </th>
                                     </tr>
 
