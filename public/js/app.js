@@ -57,7 +57,6 @@ function render () {
   $locationsList.empty();
   // pass `allLocations` into the template function
   var locationsHtml = template({ locations: allLocations });
-  console.log(locationsHtml);
   // append html to the view
   $locationsList.append(locationsHtml);
 }
@@ -66,7 +65,6 @@ function render () {
 // success for GET ALL
 function handleGetAllSuccess(taco) {
     allLocations = taco;
-    console.log(allLocations);
 
     render();
 // console.log("THIS TACO IS A : " , taco);

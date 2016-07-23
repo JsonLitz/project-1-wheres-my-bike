@@ -45,7 +45,7 @@ function destroy(req, res) {
 function update(req, res) {
     console.log('updating with data', req.body);
     var updateData = req.body;
-    var id = req.params.locationId;
+    var id = req.params.id;
     console.log('test123456');
     db.Location.findByIdAndUpdate(id, updateData, {new: true}, function(err, savedUpdatedLocation) {
         if (err) {

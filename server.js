@@ -48,21 +48,45 @@ app.post('/api/locations', controllers.location.create);
 app.delete('/api/locations/:locationId', controllers.location.destroy);
 app.put('/api/locations/:locatonId',controllers.location.update);
 // app.get('/api/locations/:locationId', controllers.location.show);
+
 /*
  * HTML Endpoints
  */
 
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
-
 });
-//
-// app.get('/api', function homepage (req, res) {
-//   // res.sendFile(__dirname + '/views/index.html');
-//
-// });
 
-app.get('/api', controllers.api.index);
+app.get('/signup', function (req, res) {
+  res.render('signup'); // alternative = res.sendFile
+});
+//Signup new user
+app.post('/signup', function (req, res) {
+  User.register(new User({ username: req.body.username }), req.body.password,
+    function (err, newUser) {
+      passport.authenticate('local')(req, res, function() {
+        res.send('signed up!!!');
+      });
+    }
+  );
+});
+//show login view
+app.get('/login', function (req, res) {
+  res.render('login'); // you can also use res.sendFile
+});
+// log in user
+app.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log(req.user);
+  res.send('logged in!!!'); // sanity check
+  // res.redirect('/'); // preferred!
+});
+//log out user
+app.get('/logout', function (req, res) {
+  console.log("BEFORE logout", JSON.stringify(req.user));
+  req.logout();
+  console.log("AFTER logout", JSON.stringify(req.user));
+  res.redirect('/');
+});
 
 
 
