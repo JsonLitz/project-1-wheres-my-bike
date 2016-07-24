@@ -42,12 +42,12 @@ function destroy(req, res) {
   });
 }
 
-//PUT /api/locations/:id update existing location
+// PUT /api/locations/:id update existing location
 function update(req, res) {
     console.log('updating with data', req.body);
     var updateData = req.body;
-    var id = req.params.id;
-    console.log(id);
+    var id = req.params.locationId;
+    console.log(id + '       id check');
     db.Location.findByIdAndUpdate(id, updateData, {new: true}, function(err, savedUpdatedLocation) {
         if (err) {
             console.log('locationToUpdate error', err);
@@ -56,7 +56,7 @@ function update(req, res) {
         res.json(savedUpdatedLocation);
     });
 }
-// console log 'var id'
+
 module.exports = {
   index: index,
   create: create,
