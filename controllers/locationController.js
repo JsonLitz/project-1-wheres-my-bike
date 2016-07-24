@@ -16,6 +16,7 @@ function create(req, res) {
         streetTwo: req.body.streetTwo,
         noteToSelf: req.body.noteToSelf,
     });
+
   newLocation.save(function (err, savedLocation) {
     if (err) {
         console.log ('err:', err);
@@ -32,7 +33,7 @@ function show(req, res) {
     res.json(foundLocation);
   });
 }
-//
+
 function destroy(req, res) {
   db.Location.findOneAndRemove({_id: req.params.locationId }, function(err, foundLocation) {
     if(err) { console.log('locationController.show error', err); }
@@ -46,7 +47,7 @@ function update(req, res) {
     console.log('updating with data', req.body);
     var updateData = req.body;
     var id = req.params.id;
-    console.log('test123456');
+    console.log(id);
     db.Location.findByIdAndUpdate(id, updateData, {new: true}, function(err, savedUpdatedLocation) {
         if (err) {
             console.log('locationToUpdate error', err);
@@ -55,7 +56,7 @@ function update(req, res) {
         res.json(savedUpdatedLocation);
     });
 }
-
+// console log 'var id'
 module.exports = {
   index: index,
   create: create,

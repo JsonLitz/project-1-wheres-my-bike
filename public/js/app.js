@@ -43,6 +43,7 @@ $("#crossStreets").on("submit", function(event) {
   console.log();
 });
 
+//button that deletes
 $locationsList.on('click', '.deleteBtn', function() {
   $.ajax({
     method: 'DELETE',
@@ -51,6 +52,16 @@ $locationsList.on('click', '.deleteBtn', function() {
     error: deleteLocationError
   });
 });
+
+
+// $locationsList.on('click', '.updateBtn', function() {
+//   $.ajax({
+//     method: 'UPDATE',
+//     url: '/api/locations/'+$(this).attr('data-id'),
+//     success: updateLocationSuccess,
+//     error: updateLocationError
+//   });
+// });
 
 function render () {
   // empty existing posts from view
@@ -65,18 +76,13 @@ function render () {
 // success for GET ALL
 function handleGetAllSuccess(taco) {
     allLocations = taco;
-
     render();
-// console.log("THIS TACO IS A : " , taco);
-    // taco.forEach(function (element){
-    //     render(element);
-    // });
 }
 function deleteLocationSuccess(json) {
     var location = json;
     var locationId = location._id;
 
-    // find the location with the correct ID and remove it from our allCities array
+    // find the location with the correct ID and remove it from our allLocations array
     for(var index = 0; index < allLocations.length; index++) {
       if(allLocations[index]._id === locationId) {
         allLocations.splice(index, 1);
@@ -86,6 +92,7 @@ function deleteLocationSuccess(json) {
     render(allLocations);
 
 }
+
 
 function handleSuccess(json) {
   allLocations = json;
