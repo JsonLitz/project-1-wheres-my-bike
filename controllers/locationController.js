@@ -2,7 +2,6 @@ var db = require('../models');
 
 // GET /api/locations
 function index(req, res) {
-  // FILL ME IN !
     db.Location.find({}, function(err, locations) {
         res.json(locations);
     });
@@ -63,9 +62,4 @@ module.exports = {
   destroy: destroy,
   show: show,
   update: update
-//
 };
-
-
-//check req.body  console log to see what I'm getting back
-//

@@ -54,14 +54,15 @@ $locationsList.on('click', '.deleteBtn', function() {
 });
 
 
-// $locationsList.on('click', '.updateBtn', function() {
-//   $.ajax({
-//     method: 'UPDATE',
-//     url: '/api/locations/'+$(this).attr('data-id'),
-//     success: updateLocationSuccess,
-//     error: updateLocationError
-//   });
-// });
+$locationsList.on('click', '.updateBtn', function() {
+  $.ajax({
+    method: 'UPDATE',
+    url: '/api/locations/'+$(this).attr('data-id'),
+    success: updateLocationSuccess,
+    error: updateLocationError
+  });
+});
+
 
 function render () {
   // empty existing posts from view
@@ -93,7 +94,9 @@ function deleteLocationSuccess(json) {
 
 }
 
-
+function updateLocationSuccess(json) {
+    
+}
 function handleSuccess(json) {
   allLocations = json;
   render();
