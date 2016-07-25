@@ -11,7 +11,7 @@
 
 var allLocations = [];
 
-$locationsList = $('#locationsTarget');
+$locationsList = $('.locationsTarget');
 
 // compile handlebars template
 var source = $('#locations-template').html();
@@ -35,7 +35,6 @@ $("#crossStreets").on("submit", function(event) {
     method: 'POST',
     url: 'api/locations',
     data: dataString,
-    // the data type here is ONE json object
     success: handlePostSuccess,
     error: handleError
   });
@@ -114,95 +113,9 @@ function handlePostSuccess(json) {
 //General error handler
 function handleError(e) {
   console.log('Ah, oops');
-  $('#cityTarget').text('Failed to load cities, is the server working?');
+  $('.locationsTarget').text('Failed to load locations, is the server working?');
 }
 
 function deleteLocationError(){
-    console.log('oops the city wasnt deleted');
+    console.log('oops the location wasnt deleted');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//
-//   // UPDATE
-//
-//   //   $('#albums').on('click', '.add-song', function(e) {
-//   //   var id= $(this).parents('.album').data('album-id');
-//   //   console.log('id',id);
-//   //   $('#songModal').data('album-id', id);
-//   //   $('#songModal').modal();
-//   // });
-//   //
-//   // $('#saveSong').on('click', handleNewSongSubmit);
-//   //
-//   // });
-//
-//
-//   $locationsList = $('#locationsTarget');
-//
-//
-//   $.ajax({
-//     method: 'GET',
-//     url: '/api/locations',
-//     success: handleSuccess,
-//     error: handleError
-//   });
-//
-//   $('#newCityForm').on('submit', function(e) {
-//     e.preventDefault();
-//     $.ajax({
-//       method: 'POST',
-//       url: '/api/cities',
-//       data: $(this).serialize(),
-//       success: newCitySuccess,
-//       error: newCityError
-//     });
-//   });
-//
-//   $citiesList.on('click', '.deleteBtn', function() {
-//     $.ajax({
-//       method: 'DELETE',
-//       url: '/api/cities/'+$(this).attr('data-id'),
-//       success: deleteCitySuccess,
-//       error: deleteCityError
-//     });
-//   });

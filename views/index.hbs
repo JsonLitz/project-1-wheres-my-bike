@@ -21,7 +21,7 @@
       username = user.username;
     </script>
     <nav class="light-blue lighten-1" role="navigation">
-        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><i class="fa fa-hand-peace-o" aria-hidden="true"></i></a>
+        <div class="nav-wrapper container"><a id="logout" href="" class="brand-logo"><i class="fa fa-hand-peace-o" aria-hidden="true"></i></a>
             <ul class="right hide-on-med-and-down">
                 <li>
                     <p>Please view me on Mobile!</p>
@@ -79,10 +79,9 @@
             <div class="row col s12">
                 <div class="icon-block">
                     <div class="row center">
-                        <h5 class="header center light-blue-text">Hi {{{user.username}}}! Your bike is at (input one) and (input two)!</h5>
+                        <h5 class="header center light-blue-text">Hi \{{username}}! Your bike is at (input one) and (input two)!</h5>
                     </div>
                     <h2 class="center light-blue-text"><i class="fa fa-bicycle" aria-hidden="true"></i></h2>
-                    <p>{{user}}</p>
                     <form id='crossStreets' class="col s12">
                         <div class="input-field form-group">
                            <input type="hidden" name="_user" class="form-control hidden" value="{{user._id}}">
@@ -113,7 +112,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 ">
-                    <div id='locationsTarget'>
+                    <div class='locationsTarget'>
                         <script id="locations-template" type="text/x-handlebars-template">
                             <table class="table table-striped table-hovers">
                                 <tr>
