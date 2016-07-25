@@ -14,6 +14,12 @@
 </head>
 
 <body>
+    <script type="text/javascript">
+      window.user = {{{user}}}
+      user = window.user
+      console.log("Welcome, ", user);
+      username = user.username;
+    </script>
     <nav class="light-blue lighten-1" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><i class="fa fa-hand-peace-o" aria-hidden="true"></i></a>
             <ul class="right hide-on-med-and-down">
@@ -63,11 +69,7 @@
             <br>
             <br>
             <h1 class="header center light-blue-text">Where's my bike?</h1>
-            <script id="albums-template" type="text/x-handlebars-template">
-                <div class="row center">
-                    <h5 class="header col s12 light">Hi (User)! Your bike is at (input one) and (input two)!</h5>
-                </div>
-            </script>
+
             <br>
             <br>
         </div>
@@ -76,8 +78,15 @@
         <div class="section col s12">
             <div class="row col s12">
                 <div class="icon-block">
+                    <div class="row center">
+                        <h5 class="header center light-blue-text">Hi {{{user.username}}}! Your bike is at (input one) and (input two)!</h5>
+                    </div>
                     <h2 class="center light-blue-text"><i class="fa fa-bicycle" aria-hidden="true"></i></h2>
+                    <p>{{user}}</p>
                     <form id='crossStreets' class="col s12">
+                        <div class="input-field form-group">
+                           <input type="hidden" name="_user" class="form-control hidden" value="{{user._id}}">
+                         </div>
                         <div class="input-field col s6 required">
                             <input id="streetOne" type="text" class="validate" name="streetOne" required="required">
                             <label for="streetOne">Street One</label>
@@ -113,19 +122,19 @@
                                         <h3 class='light-blue-text'>Places you've parked</h3>
                                     </th>
                                 </tr>
-                                {{#each locations}}
+                                \{{#each locations}}
                                 <tr align="center">
-                                    <td>{{streetOne}}</td>
-                                    <td>{{streetTwo}}</td>
-                                    <td>{{noteToSelf}}</td>
+                                    <td>\{{streetOne}}</td>
+                                    <td>\{{streetTwo}}</td>
+                                    <td>\{{noteToSelf}}</td>
                                     <td>
-                                        <button type="button" name="button" class="deleteBtn btn btn-danger center" data-id="{{_id}}">Delete</button>
+                                        <button type="button" name="button" class="deleteBtn btn btn-danger center" data-id="\{{_id}}">Delete</button>
                                     </td>
                                     <!-- <td>
                                         <button type="button" name="button" class="updateBtn btn btn-danger center" data-id="{{_id}}">Update</button>
                                     </td>                                 -->
                                 </tr>
-                                {{/each}}
+                                \{{/each}}
                             </table>
                         </script>
                     </div>

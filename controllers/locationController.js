@@ -2,15 +2,26 @@ var db = require('../models');
 
 // GET /api/locations
 function index(req, res) {
-    db.Location.find({}, function(err, locations) {
-        res.json(locations);
-    });
+    // make sure the current user's id matches this location's user id associated with it (authorized)
+    //TODO: Only show posts from req.user
+    if(req.user){
+        user = req.user;
+        // find all locations specifically having the _user matching the logged in user's id
+        db.Location.find({_user: user._id}, function(err, locations) {
+
+            res.json(locations);
+        });
+    } 
 }
 
 
 
 function create(req, res) {
+    //TODO: Also get the user's id to put into a new location.
+    console.log("LOGGED IN USER: " , req.user);
+    var user = req.user;
     var newLocation = new db.Location({
+        _user: user._id,
         streetOne: req.body.streetOne,
         streetTwo: req.body.streetTwo,
         noteToSelf: req.body.noteToSelf,
@@ -26,6 +37,7 @@ function create(req, res) {
 
 
 function show(req, res) {
+  // make sure the current user's id matches this location's user id associated with it (authorized)
   db.Location.findById(req.params.locationId, function(err, foundLocation) {
     if(err) { console.log('locationController.show error', err); }
     console.log('locationController.show responding with', foundLocation);
@@ -34,6 +46,8 @@ function show(req, res) {
 }
 
 function destroy(req, res) {
+    // make sure the current user's id matches this location's user id associated with it (authorized)
+
   db.Location.findOneAndRemove({_id: req.params.locationId }, function(err, foundLocation) {
     if(err) { console.log('locationController.show error', err); }
     console.log('location entry was succesfully deleted!', foundLocation);
@@ -43,6 +57,8 @@ function destroy(req, res) {
 
 // PUT /api/locations/:id update existing location
 function update(req, res) {
+    // make sure the current user's id matches this location's user id associated with it (authorized)
+
     console.log('updating with data', req.body);
     var updateData = req.body;
     var id = req.params.locationId;

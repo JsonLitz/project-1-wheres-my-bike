@@ -29,7 +29,6 @@ app.use(passport.session());
 
 // require Post model
 var db = require('./models'),
-    Post = db.Post;
     User = db.User;
 
 // passport config
@@ -55,7 +54,7 @@ app.put('/api/locations/:locationId', controllers.location.update);
  */
 
 app.get('/', function homepage (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+  res.render('index', {user: JSON.stringify(req.user) + " || null"});
 });
 
 app.get('/signup', function (req, res) {
@@ -67,7 +66,7 @@ app.post('/signup', function (req, res) {
   User.register(new User({ username: req.body.username }), req.body.password,
     function (err, newUser) {
       passport.authenticate('local')(req, res, function() {
-        res.send('sign up successful!!!');
+        res.redirect('/');
       });
     }
   );
@@ -79,8 +78,7 @@ app.get('/login', function (req, res) {
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
   console.log(req.user);
-  res.send('logged in!!!'); // sanity check
-  // res.redirect('/'); // preferred!
+  res.redirect('/'); // sanity check
 });
 //log out user
 app.get('/logout', function (req, res) {

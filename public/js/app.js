@@ -69,6 +69,8 @@ function render () {
   $locationsList.empty();
   // pass `allLocations` into the template function
   var locationsHtml = template({ locations: allLocations });
+  console.log("RENDERING...");
+  console.log(locationsHtml);
   // append html to the view
   $locationsList.append(locationsHtml);
 }
@@ -77,6 +79,7 @@ function render () {
 // success for GET ALL
 function handleGetAllSuccess(taco) {
     allLocations = taco;
+    console.log("ALL LOCATIONS: " , allLocations);
     render();
 }
 function deleteLocationSuccess(json) {
@@ -95,14 +98,16 @@ function deleteLocationSuccess(json) {
 }
 
 function updateLocationSuccess(json) {
-    
+
 }
 function handleSuccess(json) {
   allLocations = json;
   render();
 }
 function handlePostSuccess(json) {
+    console.log(json);
     allLocations.unshift(json);
+    console.log(allLocations);
     render();
 }
 
