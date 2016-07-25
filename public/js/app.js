@@ -35,6 +35,7 @@ $("#crossStreets").on("submit", function(event) {
     method: 'POST',
     url: 'api/locations',
     data: dataString,
+    // the data type here is ONE json object
     success: handlePostSuccess,
     error: handleError
   });
@@ -112,10 +113,27 @@ function handlePostSuccess(json) {
 
 //General error handler
 function handleError(e) {
-  console.log('Ah, oops');
-  $('.locationsTarget').text('Failed to load locations, is the server working?');
+  console.log('You gotta Log in!');
+  $('.LocationsTarget').text('Failed to load locations, are you logged in?');
 }
 
 function deleteLocationError(){
-    console.log('oops the location wasnt deleted');
+    console.log('oops the city wasnt deleted');
 }
+
+
+//Logout function
+
+$('#logout').click(function logout(){
+$.ajax({
+    type: 'GET',
+    url: '/logout',
+    success: logoutSuccess
+});
+
+function logoutSuccess(json) {
+    window.location.reload();
+}
+console.log('loggin out');
+
+});
