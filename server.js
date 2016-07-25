@@ -47,7 +47,7 @@ app.get('/api/locations/:locationId', controllers.location.show);
 app.post('/api/locations', controllers.location.create);
 app.delete('/api/locations/:locationId', controllers.location.destroy);
 app.put('/api/locations/:locationId', controllers.location.update);
-app.get('/api/users', controllers.user.index);
+//app.get('/api/users', controllers.user.index);
 
 
 /*
