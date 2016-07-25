@@ -78,9 +78,11 @@
         <div class="section col s12">
             <div class="row col s12">
                 <div class="icon-block">
-                    <div class="row center">
-
-                        <h5 class="header center light-blue-text">Hi \{{username}}! Your bike is at (input one) and (input two)!</h5>
+                    <div class="row center" id="header-target">
+                        <h5 class="header center light-blue-text">Hi <span class="username"></span>! Your bike is at (input one) and (input two)!</h5>
+                        <!-- <script type="text/x-handlebars-template" id="header-template">
+                            <h5 class="header center light-blue-text">Hi \{{username}}! Your bike is at (input one) and (input two)!</h5>
+                        </script> -->
                     </div>
                     <h2 class="center light-blue-text"><i class="fa fa-bicycle" aria-hidden="true"></i></h2>
                     <form id='crossStreets' class="col s12">
@@ -150,7 +152,7 @@
 <footer class="page-footer green darken-3 parkingHistory">
     <div class="footer-copyright">
         <div class="container">
-            Made by <a class="red-text text-lighten-3" href="https://github.com/JsonLitz">jSON</a>
+            Made by <a class="red-text text-lighten-3" href="https://github.com/JsonLitz">jSON</a>. See ya later  <span class="username">username</span>
         </div>
     </div>
 </footer>

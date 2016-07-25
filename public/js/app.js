@@ -73,6 +73,10 @@ function render () {
   console.log(locationsHtml);
   // append html to the view
   $locationsList.append(locationsHtml);
+
+  ////
+
+  // Handlebars.compile($("#header-template").html())(user)
 }
 
 
