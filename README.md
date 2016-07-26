@@ -18,8 +18,8 @@ This project is a full-scale app built (mostly) from scratch and utilizes the fo
 * support storing location information (with full CRUD) (mongoose embedded)
 
 
-![ScreenShot](public/images/wireframe.png)
-asdasd
+![ScreenShot](https://wireframe.cc/hv6RRh)
+
 
 
 ## User login
