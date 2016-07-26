@@ -72,9 +72,7 @@
     <script type="text/javascript">
       window.user = {{{user}}}
       user = window.user
-      console.log("Welcome, ", user);
       username = user !== null ? user.username : " ";
-      console.log("Welcome, ", username);
 
     </script>
     <div class="container">
@@ -82,10 +80,10 @@
             <div class="row col s12">
                 <div class="icon-block">
                     <div class="row center" id="header-target">
-                        <h5 class="header center light-blue-text"><span class="username"></span>
+                        <h5 class="header center light-blue-text">Welcome         <span class="username"></span>
                     </div>
                     <h2 class="center light-blue-text"><i class="fa fa-bicycle" aria-hidden="true"></i></h2>
-                    <span id="last-parked"></span>
+                    <h4><span id="last-parked"></span></h4>
                     <form id='crossStreets' class="col s12">
                         <div class="input-field form-group">
                            <input type="hidden" name="_user" class="form-control hidden" value="{{user._id}}">

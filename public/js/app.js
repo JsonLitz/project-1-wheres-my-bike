@@ -35,7 +35,6 @@ $("#crossStreets").on("submit", function(event) {
     method: 'POST',
     url: 'api/locations',
     data: dataString,
-    // the data type here is ONE json object
     success: handlePostSuccess,
     error: handleError
   });
@@ -53,7 +52,7 @@ $locationsList.on('click', '.deleteBtn', function() {
   });
 });
 
-//Update part of CRUD
+//Update a location
 $locationsList.on('click', '.updateBtn', function() {
   $.ajax({
     method: 'UPDATE',
@@ -69,13 +68,8 @@ function render () {
   $locationsList.empty();
   // pass `allLocations` into the template function
   var locationsHtml = template({ locations: allLocations });
-  console.log("RENDERING...");
-  console.log(locationsHtml);
   // append html to the view
   $locationsList.append(locationsHtml);
-
-  ////
-
 
 }
 
@@ -83,7 +77,6 @@ function render () {
 // success for GET ALL
 function handleGetAllSuccess(taco) {
     allLocations = taco;
-    console.log("ALL LOCATIONS: " , allLocations);
     render();
 }
 function deleteLocationSuccess(json) {
@@ -144,10 +137,10 @@ console.log('loggin out');
 
 
 
-
+var streetOne = ('#stOne0');
 
 if (username !== null) {
-    $('.username').html('Hi ' + username + '!');
+    $('.username').html( username + '!');
 
 } else {
     console.log('null');

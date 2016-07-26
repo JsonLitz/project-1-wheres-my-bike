@@ -19,7 +19,7 @@ app.set('view engine', 'hbs');
 // middleware for auth
 app.use(cookieParser());
 app.use(session({
-  secret: 'password', // change this!
+  secret: 'password', 
   resave: false,
   saveUninitialized: false
 }));
@@ -46,7 +46,6 @@ app.get('/api/locations/:locationId', controllers.location.show);
 app.post('/api/locations', controllers.location.create);
 app.delete('/api/locations/:locationId', controllers.location.destroy);
 app.put('/api/locations/:locationId', controllers.location.update);
-//app.get('/api/users', controllers.user.index);
 
 
 /*
@@ -73,12 +72,12 @@ app.post('/signup', function (req, res) {
 });
 //show login view
 app.get('/login', function (req, res) {
-  res.sendFile('login'); // you can also use res.sendFile
+  res.sendFile('login');
 });
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
   console.log(req.user);
-  res.redirect('/'); // sanity check
+  res.redirect('/');
 });
 //log out user
 function logout(){
