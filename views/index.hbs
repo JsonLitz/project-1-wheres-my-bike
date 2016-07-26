@@ -85,6 +85,7 @@
                         <h5 class="header center light-blue-text"><span class="username"></span>
                     </div>
                     <h2 class="center light-blue-text"><i class="fa fa-bicycle" aria-hidden="true"></i></h2>
+                    <span id="last-parked"></span>
                     <form id='crossStreets' class="col s12">
                         <div class="input-field form-group">
                            <input type="hidden" name="_user" class="form-control hidden" value="{{user._id}}">
@@ -126,8 +127,8 @@
                                 </tr>
                                 \{{#each locations}}
                                 <tr align="center">
-                                    <td>\{{streetOne}}</td>
-                                    <td>\{{streetTwo}}</td>
+                                    <td id="stOne\{{@index}}">\{{streetOne}}</td>
+                                    <td id="stTwo\{{@index}}">\{{streetTwo}}</td>
                                     <td>\{{noteToSelf}}</td>
                                     <td>
                                         <button type="button" name="button" class="deleteBtn btn btn-danger center" data-id="\{{_id}}">Delete</button>
