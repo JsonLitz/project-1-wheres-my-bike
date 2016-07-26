@@ -18,6 +18,10 @@ This project is a full-scale app built (mostly) from scratch and utilizes the fo
 * support storing location information (with full CRUD) (mongoose embedded)
 
 
+![ScreenShot](public/images/wireframe.png)
+asdasd
+
+
 ## User login
 
 Users can login via the slideout window on the left hand side of the app.
