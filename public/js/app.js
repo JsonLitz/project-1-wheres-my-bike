@@ -53,7 +53,7 @@ $locationsList.on('click', '.deleteBtn', function() {
   });
 });
 
-
+//Update part of CRUD
 $locationsList.on('click', '.updateBtn', function() {
   $.ajax({
     method: 'UPDATE',
@@ -76,7 +76,7 @@ function render () {
 
   ////
 
-  // Handlebars.compile($("#header-template").html())(user)
+
 }
 
 
@@ -118,7 +118,7 @@ function handlePostSuccess(json) {
 //General error handler
 function handleError(e) {
   console.log('You gotta Log in!');
-  $('.LocationsTarget').text('Failed to load locations, are you logged in?');
+  $('.locationsTarget').text('Failed to load locations, are you logged in?');
 }
 
 function deleteLocationError(){
@@ -141,3 +141,14 @@ function logoutSuccess(json) {
 console.log('loggin out');
 
 });
+
+
+
+
+
+if (username !== null) {
+    $('.username').html('Hi ' + username + '!');
+
+} else {
+    console.log('null');
+}

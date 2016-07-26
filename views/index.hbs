@@ -14,12 +14,7 @@
 </head>
 
 <body>
-    <script type="text/javascript">
-      window.user = {{{user}}}
-      user = window.user
-      console.log("Welcome, ", user);
-      username = user.username;
-    </script>
+
     <nav class="light-blue lighten-1" role="navigation">
         <div class="nav-wrapper container"><a id="logout" href="#" class="brand-logo"><i class="fa fa-hand-peace-o" aria-hidden="true"></i></a>
             <ul class="right hide-on-med-and-down">
@@ -32,7 +27,7 @@
                 <li>
                     <p class="light-blue-text ">Login</P>
                 </li>
-                <form method="POST" action="/login">
+                <form method="POST" action="/login" id="login">
                     <div class="form-group input-field">
                         <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
                     </div>
@@ -40,7 +35,7 @@
                         <input type="text" name="password" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-block btn-primary" value="Log In">
+                        <input type="submit" class="btn btn-block btn-primary"  value="Log In">
                     </div>
                 </form>
                 <li>
@@ -74,15 +69,20 @@
             <br>
         </div>
     </div>
+    <script type="text/javascript">
+      window.user = {{{user}}}
+      user = window.user
+      console.log("Welcome, ", user);
+      username = user !== null ? user.username : " ";
+      console.log("Welcome, ", username);
+
+    </script>
     <div class="container">
         <div class="section col s12">
             <div class="row col s12">
                 <div class="icon-block">
                     <div class="row center" id="header-target">
-                        <h5 class="header center light-blue-text">Hi <span class="username"></span>! Your bike is at (input one) and (input two)!</h5>
-                        <!-- <script type="text/x-handlebars-template" id="header-template">
-                            <h5 class="header center light-blue-text">Hi \{{username}}! Your bike is at (input one) and (input two)!</h5>
-                        </script> -->
+                        <h5 class="header center light-blue-text"><span class="username"></span>
                     </div>
                     <h2 class="center light-blue-text"><i class="fa fa-bicycle" aria-hidden="true"></i></h2>
                     <form id='crossStreets' class="col s12">
