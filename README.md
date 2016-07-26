@@ -19,6 +19,15 @@ This project is a full-scale app built (mostly) from scratch and utilizes the fo
 * one to many relationship between users and locations db
 ***
 
+## Technologies Used 
+* javascript
+* jQuery
+* node
+* mongoose and mongodb
+* materialize/bootstrap
+* handlebars
+
+
 
 ![ScreenShot](public/images/wireframe.png)
 
