@@ -19,6 +19,15 @@ This project is a full-scale app built (mostly) from scratch and utilizes the fo
 * one to many relationship between users and locations db
 ***
 
+## Technologies Used 
+* javascript
+* jQuery
+* node
+* mongoose and mongodb
+* materialize/bootstrap
+* handlebars
+
+
 
 ![ScreenShot](public/images/wireframe.png)
 
@@ -33,8 +42,10 @@ Passport is the middleware used to authenticate users and create sessions.
 The app supports a one to many relatioship between users and locations.
 
 
+https://murmuring-wave-47459.herokuapp.com/
+
 ## Features to come
 
 * Google maps API/ pin feature to show visibly on a map where the bike is located
 * Picture feature that allows you to capture a bike upon field entry.
-* 
+

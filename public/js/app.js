@@ -1,9 +1,7 @@
 (function($){
   $(function(){
-
     $('.button-collapse').sideNav();
-
-
+    var $streetOne = $('#stOne0').text();
   }); // end of document ready
 })(jQuery); // end of jQuery name space
 
@@ -35,6 +33,7 @@ $("#crossStreets").on("submit", function(event) {
     method: 'POST',
     url: 'api/locations',
     data: dataString,
+    // the data type here is ONE json object
     success: handlePostSuccess,
     error: handleError
   });
@@ -52,7 +51,7 @@ $locationsList.on('click', '.deleteBtn', function() {
   });
 });
 
-//Update a location
+//Update part of CRUD
 $locationsList.on('click', '.updateBtn', function() {
   $.ajax({
     method: 'UPDATE',
@@ -71,6 +70,9 @@ function render () {
   // append html to the view
   $locationsList.append(locationsHtml);
 
+  ////
+
+
 }
 
 
@@ -78,7 +80,9 @@ function render () {
 function handleGetAllSuccess(taco) {
     allLocations = taco;
     render();
-}
+
+
+    }
 function deleteLocationSuccess(json) {
     var location = json;
     var locationId = location._id;
@@ -136,8 +140,6 @@ console.log('loggin out');
 });
 
 
-
-var streetOne = ('#stOne0');
 
 if (username !== null) {
     $('.username').html( username + '!');

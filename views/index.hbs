@@ -35,7 +35,7 @@
                         <input type="text" name="password" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-block btn-primary"  value="Log In">
+                        <input type="submit" class="btn btn-block btn-primary" value="Log In">
                     </div>
                 </form>
                 <li>
@@ -70,10 +70,9 @@
         </div>
     </div>
     <script type="text/javascript">
-      window.user = {{{user}}}
-      user = window.user
-      username = user !== null ? user.username : " ";
-
+        window.user = {{{user}}}
+        user = window.user
+        username = user !== null ? user.username : " ";
     </script>
     <div class="container">
         <div class="section col s12">
@@ -83,7 +82,8 @@
                         <h5 class="header center light-blue-text">Welcome         <span class="username"></span>
                     </div>
                     <h2 class="center light-blue-text"><i class="fa fa-bicycle" aria-hidden="true"></i></h2>
-                    <h4><span id="last-parked"></span></h4>
+                    <h4>
+                </h4>
                     <form id='crossStreets' class="col s12">
                         <div class="input-field form-group">
                            <input type="hidden" name="_user" class="form-control hidden" value="{{user._id}}">
@@ -114,36 +114,6 @@
             </div>
         </div>
     </div>
-    <!-- Google maps API code -->
-    <!-- <div id="map">
-    <script>
-    var map;
-    function initMap() {
-    var styleSettings = [
-    {
-    featureType: 'all',
-    stylers : [
-    {invert_lightness: 'true'},
-    ]
-}];
-var myLatlng = new google.maps.LatLng(37.78,-122.44);
-var mapOptions = {
-scrollwheel: false,
-zoom: 10,
-center: myLatlng
-}
-var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-map.setOptions ({styles: styleSettings});
-var marker = new google.maps.Marker({
-position: myLatlng,
-title:"Hello World!"
-});
-marker.setMap(map);
-};
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"
-async defer></script> -->
-</div>
 <div class="row">
     <div class="container">
         <div class="row">
