@@ -6,7 +6,7 @@ var LocationSchema = new Schema({
   streetOne: String,
   streetTwo: String,
   noteToSelf: String,
-  dateTime: Date
+  dateTime: {type:Date, default: new Date()}
 });
 
 var Location = mongoose.model('Location', LocationSchema);
