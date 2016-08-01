@@ -5,8 +5,6 @@
   }); // end of document ready
 })(jQuery); // end of jQuery name space
 
-
-
 var allLocations = [];
 
 $locationsList = $('.locationsTarget');
@@ -14,8 +12,6 @@ $locationsList = $('.locationsTarget');
 // compile handlebars template
 var source = $('#locations-template').html();
  template = Handlebars.compile(source);
-
-
 
 $.ajax({
   method: 'GET',
@@ -56,11 +52,14 @@ $locationsList.on('click', '.updateBtn', function() {
   $.ajax({
     method: 'UPDATE',
     url: '/api/locations/'+$(this).attr('data-id'),
+    // Does data need to be sent to the update route?
     success: updateLocationSuccess,
     error: updateLocationError
   });
 });
 
+// Rather than rendering all locations at once, you may consider making the template process locations
+// one at a time so you do not have to re-render all data each time that a change is made
 
 function render () {
   // empty existing posts from view
@@ -69,81 +68,77 @@ function render () {
   var locationsHtml = template({ locations: allLocations });
   // append html to the view
   $locationsList.append(locationsHtml);
-
-  ////
-
-
 }
 
 
 // success for GET ALL
 function handleGetAllSuccess(taco) {
-    allLocations = taco;
-    render();
-
-
-    }
-function deleteLocationSuccess(json) {
-    var location = json;
-    var locationId = location._id;
-
-    // find the location with the correct ID and remove it from our allLocations array
-    for(var index = 0; index < allLocations.length; index++) {
-      if(allLocations[index]._id === locationId) {
-        allLocations.splice(index, 1);
-        break;
-      }
-    }
-    render(allLocations);
-
+  allLocations = taco;
+  render();
 }
 
+function deleteLocationSuccess(json) {
+  var location = json;
+  var locationId = location._id;
+  // find the location with the correct ID and remove it from our allLocations array
+  for(var index = 0; index < allLocations.length; index++) {
+    if(allLocations[index]._id === locationId) {
+      allLocations.splice(index, 1);
+      break;
+    }
+  }
+  render(allLocations);
+}
+
+// Remove or comment out unfinished features
+// It could also be helpful to leave yourself a comment about what you had hoped to accomplish with this function
+// That way, you have a starting point mapped out for yourself when you come back to work on this
 function updateLocationSuccess(json) {
 
 }
+
 function handleSuccess(json) {
   allLocations = json;
   render();
 }
+
 function handlePostSuccess(json) {
-    console.log(json);
-    allLocations.unshift(json);
-    console.log(allLocations);
-    render();
+  console.log(json);
+  // Nice use of unshift to include the most recent loction on top
+  allLocations.unshift(json);
+  console.log(allLocations);
+  render();
 }
 
 //General error handler
 function handleError(e) {
   console.log('You gotta Log in!');
+  // Nice error handling! It's great that you're communicating with the user
   $('.locationsTarget').text('Failed to load locations, are you logged in?');
 }
 
 function deleteLocationError(){
-    console.log('oops the city wasnt deleted');
+  console.log('oops the city wasnt deleted');
 }
-
 
 //Logout function
-
 $('#logout').click(function logout(){
-$.ajax({
-    type: 'GET',
-    url: '/logout',
-    success: logoutSuccess
-});
+  $.ajax({
+      type: 'GET',
+      url: '/logout',
+      success: logoutSuccess
+  });
 
-function logoutSuccess(json) {
+  function logoutSuccess(json) {
     window.location.reload();
-}
-console.log('loggin out');
-
+  }
+  console.log('loggin out');
 });
 
 
-
+// I'd recommend wrapping this in a function that you can call
 if (username !== null) {
     $('.username').html( username + '!');
-
 } else {
     console.log('null');
 }

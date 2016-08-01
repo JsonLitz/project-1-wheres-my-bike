@@ -19,7 +19,7 @@ app.set('view engine', 'hbs');
 // middleware for auth
 app.use(cookieParser());
 app.use(session({
-  secret: 'password', 
+  secret: 'password',
   resave: false,
   saveUninitialized: false
 }));
@@ -40,6 +40,8 @@ var db = require('./models'),
  */
  var controllers = require('./controllers');
 
+// Your controller should be plural (locations, not location)
+// ex. controllers.locations.index
 app.get('/api', controllers.api.index);
 app.get('/api/locations', controllers.location.index);
 app.get('/api/locations/:locationId', controllers.location.show);
@@ -70,25 +72,28 @@ app.post('/signup', function (req, res) {
     }
   );
 });
+
 //show login view
 app.get('/login', function (req, res) {
   res.sendFile('login');
 });
+
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
   console.log(req.user);
   res.redirect('/');
 });
+
 //log out user
 function logout(){
-app.get('/logout', function (req, res) {
-  console.log("BEFORE logout", JSON.stringify(req.user));
-  req.logout();
-  console.log("AFTER logout", JSON.stringify(req.user));
-  res.redirect('/');
-});
+  app.get('/logout', function (req, res) {
+    // Remove sanity-check console logs in 'production' (submitted) code
+    console.log("BEFORE logout", JSON.stringify(req.user));
+    req.logout();
+    console.log("AFTER logout", JSON.stringify(req.user));
+    res.redirect('/');
+  });
 }
-
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000, function () {

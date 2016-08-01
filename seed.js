@@ -29,17 +29,12 @@ db.Location.remove({}, function(err, location) {
     return;
   } else {
     console.log('removed all locations');
-
     db.Location.create(locations, function(err, newLocations){
       if (err) {
          console.log('err', err);
       }
       console.log("created " +  newLocations + " locations");
-
       process.exit();
     });
   }
-
-
-
 });

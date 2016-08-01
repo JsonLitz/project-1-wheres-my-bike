@@ -6,6 +6,8 @@
  * Made By MaterializeCSS.com
  */
 
+ /*Custom styles should be ordered from most general (element selectors) to most specific (classes)*/
+
 .icon-block {
   padding: 0 15px;
 }
