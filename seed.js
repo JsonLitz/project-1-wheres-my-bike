@@ -33,6 +33,7 @@ db.Location.remove({}, function(err, location) {
       if (err) {
          console.log('err', err);
       }
+      //TODO: Should this be newLocations.length or do you want to see a list of all newly seeded locations?
       console.log("created " +  newLocations + " locations");
       process.exit();
     });

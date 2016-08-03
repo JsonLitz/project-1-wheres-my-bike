@@ -40,7 +40,7 @@ var db = require('./models'),
  */
  var controllers = require('./controllers');
 
-// Your controller should be plural (locations, not location)
+// TODO: Your controller should be plural (locations, not location)
 // ex. controllers.locations.index
 app.get('/api', controllers.api.index);
 app.get('/api/locations', controllers.location.index);
@@ -87,7 +87,7 @@ app.post('/login', passport.authenticate('local'), function (req, res) {
 //log out user
 function logout(){
   app.get('/logout', function (req, res) {
-    // Remove sanity-check console logs in 'production' (submitted) code
+    // TODO: Remove sanity-check console logs in 'production' (submitted) code
     console.log("BEFORE logout", JSON.stringify(req.user));
     req.logout();
     console.log("AFTER logout", JSON.stringify(req.user));

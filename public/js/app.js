@@ -58,7 +58,7 @@ $locationsList.on('click', '.updateBtn', function() {
   });
 });
 
-// Rather than rendering all locations at once, you may consider making the template process locations
+// TODO: Rather than rendering all locations at once, you may consider making the template process locations
 // one at a time so you do not have to re-render all data each time that a change is made
 
 function render () {
@@ -73,6 +73,7 @@ function render () {
 
 // success for GET ALL
 function handleGetAllSuccess(taco) {
+  // TODO: Taco is fun for development and testing, but you should use descriptive variable names for production code
   allLocations = taco;
   render();
 }
@@ -90,7 +91,7 @@ function deleteLocationSuccess(json) {
   render(allLocations);
 }
 
-// Remove or comment out unfinished features
+// TODO: Remove or comment out unfinished features
 // It could also be helpful to leave yourself a comment about what you had hoped to accomplish with this function
 // That way, you have a starting point mapped out for yourself when you come back to work on this
 function updateLocationSuccess(json) {
@@ -136,9 +137,11 @@ $('#logout').click(function logout(){
 });
 
 
-// I'd recommend wrapping this in a function that you can call
+// TODO: I'd recommend wrapping this in a function that you can call
 if (username !== null) {
     $('.username').html( username + '!');
 } else {
+  // What is this console log accomplishing? This could be a good method to use to
+  // adjust the view so unauthenticated users don't try to CRUD locations before logging in.
     console.log('null');
 }

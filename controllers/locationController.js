@@ -1,7 +1,7 @@
 var db = require('../models');
 // Nice comments in your code! They're really helpful.
 
-// Watch your indentation. It's important to have well-indented, clean code for readability
+// TODO: Watch your indentation. It's important to have well-indented, clean code for readability
 
 // GET /api/locations
 function index(req, res) {
